@@ -4,14 +4,14 @@ source functions.sh
 source configs.sh
 
 # Pinout for cellulariot hat
-STATUS=19
-POWERKEY=26
+STATUS=7
+POWERKEY=25
 
 
 # Configure pins
 gpio -g mode $STATUS in
 gpio -g mode $POWERKEY out
-gpio -g mode $ENABLE out
+#gpio -g mode $ENABLE out
 
 
 function power_up_module()
@@ -20,10 +20,10 @@ function power_up_module()
 		if [[ $(gpio -g read $STATUS) -eq 1 ]]; then
 			debug "Module is powering up..."
 
-			gpio -g write $POWERKEY 0
 			gpio -g write $POWERKEY 1
-			sleep 2
 			gpio -g write $POWERKEY 0
+			sleep 2
+			gpio -g write $POWERKEY 1
 			sleep 5
 
 			if [[ $(gpio -g read $STATUS) -eq 0 ]]; then
