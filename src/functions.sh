@@ -53,7 +53,7 @@ function check_network()
 
         # Combined network registration status
         NETWORK_REG=$((NETWORK_REG_1 & NETWORK_REG_2 & NETWORK_REG_3 & NETWORK_REG_4 & NETWORK_REG_5 & NETWORK_REG_6))
-        
+
         if [[ $SIM_READY -eq 0 ]] && [[ $NETWORK_REG -eq 0 ]]; then
             debug "Network is ready."
             NETWORK_OK=1

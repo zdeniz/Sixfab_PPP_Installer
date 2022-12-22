@@ -1,0 +1,3 @@
+port: /dev/#DEVICE
+baudrate: 460800
+timeout: 10

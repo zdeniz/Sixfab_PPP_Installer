@@ -242,6 +242,7 @@ do
 			cp $SOURCE_PATH/configs.sh configs.sh
 			cp $SOURCE_PATH/configure_modem.sh configure_modem.sh
 			cp $SOURCE_PATH/$MANAGER_SCRIPT_NAME $MANAGER_SCRIPT_NAME
+			cp $SOURCE_PATH/configs.yml configs.yml
 
 			# APN Configuration
 			sed -i "s/SIM_APN/$carrierapn/" configure_modem.sh
@@ -253,6 +254,7 @@ do
 				sed -i "s/STATUS_PIN/$STATUS_GPRS/" configure_modem.sh
 				sed -i "s/POWERKEY_PIN/$POWERKEY_GPRS/" configure_modem.sh
 				sed -i "s/POWERUP_FLAG/$POWERUP_REQ/" configure_modem.sh
+				sed -i "s/#DEVICE/$devicename/" configs.yml
 
 			  
 			elif [ $shield_hat -eq 2 ]; then 
@@ -296,6 +298,7 @@ do
 			  mv functions.sh $PPP_PATH
 			  mv configs.sh $PPP_PATH
 			  mv configure_modem.sh $PPP_PATH
+			  mv configs.yml $PPP_PATH
 			  mv $RECONNECT_SCRIPT_NAME $PPP_PATH
 			  mv $MANAGER_SCRIPT_NAME $PPP_PATH
 			  mv $SERVICE_NAME /etc/systemd/system/
