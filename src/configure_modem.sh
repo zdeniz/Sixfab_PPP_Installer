@@ -19,7 +19,7 @@ function power_up_module
     gpio -g mode $POWERKEY out
 
 	for i in {1..20}; do
-		if [[ $(gpio -g read $STATUS) -eq 1 ]]; then
+		if [[ $(gpio -g read $STATUS) -eq 0 ]]; then
 			debug "Module is powering up..."
 
 			gpio -g write $POWERKEY 0
@@ -28,7 +28,7 @@ function power_up_module
 			gpio -g write $POWERKEY 0
 			sleep 5
 
-			if [[ $(gpio -g read $STATUS) -eq 0 ]]; then
+			if [[ $(gpio -g read $STATUS) -eq 1 ]]; then
 				debug "Module is powered up."
 				return 0
 				break
