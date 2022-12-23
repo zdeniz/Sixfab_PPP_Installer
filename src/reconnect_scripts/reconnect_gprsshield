@@ -49,6 +49,8 @@ if power_up_module -eq 0 ; then sleep 0.1; else debug "Module couldn't be powere
 if check_network -eq 0; then 
     debug "PPP chatscript is starting...";
     sudo pon;
+	sleep 2;
+	sudo ifmetric ppp0 400;
 
 	# check default interface
 	route | grep ppp | grep default > /dev/null
@@ -77,7 +79,9 @@ while true; do
         else
 	        debug "Connection is down, reconnecting..."
             if check_network -eq 0; then sleep 0.1; else debug "Network registration is failed!"; fi
-	        sudo pon
+	        sudo pon;
+			sleep 2;
+			sudo ifmetric ppp0 400;
 
 			# check default interface
 			route | grep ppp | grep default > /dev/null
