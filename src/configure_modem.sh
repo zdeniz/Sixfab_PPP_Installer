@@ -3,8 +3,8 @@
 source functions.sh
 
 # default pins set for cellulariot hat 
-STATUS=${STATUS_PIN:-23}
-POWERKEY=${POWERKEY_PIN:-24}
+STATUS=STATUS_PIN
+POWERKEY=POWERKEY_PIN
 POWER_UP_REQUIRED=${POWERUP_FLAG:-1}
 
 # default arguments
